@@ -1,27 +1,26 @@
-//1. Write a well-documented (commented) program, “RelativelyPrimeArray,” 
-// that takes an integer command-line argument “n” 
-// and creates an (n+1)-by-(n+1) Boolean array “rpa” such that rpa[i][j] (for i,j>0) 
-// is true if i and j are relatively prime (have no common factors), and is false otherwise. 
-// It should then output as is shown by the sample run below. If the indexes i,j (for i,j>0) are equal, it should output a single space. 
-// If the indexes are not equal, then it should output a 
-// "T" character if the array element specified by the indexes is true or an "F" character if it is false. [MO2.1, MO2.2]
-
-// A sample run would be as follows.
-
-// > java RelativelyPrimeArray 9
-//    1 2 3 4 5 6 7 8 9
-// 1    T T T T T T T T
-// 2 T    T F T F T F T
-// 3 T T    T T F T T F
-// 4 T F T    T F T F T
-// 5 T T T T    T T T T
-// 6 T F F F T    T F F
-// 7 T T T T T T    T T
-// 8 T F T F T F T    T
-// 9 T T F T T F T T
-
-class RelativelyPrimeArray{
+// open the class RelativelyPrimeArray
+public class RelativelyPrimeArray{
+    // calling and creating the main method
     public static void main(String[] args) {
-        System.out.println("Hello, World!"); 
+        // stores the length of the user input in arrayLength
+        int arrayLength = Integer.parseInt(args[0]);
+        // creates a new int array distributionList with the length based on arrayLength
+        int[] distributionList = new int [arrayLength];
+        // assign two variables that count the int in the array, bigCount for >50, and smallCount for <= 50.
+        int bigCount = 0;
+        int smallCount = 0;
+        // a for loop that iterates through the distributionList once
+        for (int i = 0; i < arrayLength; i++){
+            // increases the bigCount value when index i in distribution list is <= 100 and > 50
+            if (distributionList[i] <= 100 && distributionList[i] > 50){
+                bigCount++;
+            // increases the smallCount value, when >=1 and <= 50
+            } else if (distributionList[i] >= 1 && distributionList[i] <= 50){
+                smallCount++;
+            }
+        }
+        // ending print statement outputs that show smallCount and bigCount.
+        System.out.println( smallCount + " entered are less than or equal to 50.");
+        System.out.println( bigCount + " entered are greater than 50.");
     }
 }
