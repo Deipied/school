@@ -1,4 +1,5 @@
 public class AndOp //class name acceptance
+
 {
   public static void main(String[] args) //user input for the two float/double
   {
