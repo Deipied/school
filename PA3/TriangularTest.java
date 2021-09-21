@@ -1,3 +1,4 @@
+package PA3;
 import javax.swing.plaf.TreeUI;
 
 public class TriangularTest{

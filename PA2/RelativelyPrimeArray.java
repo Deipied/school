@@ -1,3 +1,4 @@
+package PA2;
 // open the class RelativelyPrimeArray
 public class RelativelyPrimeArray{
     // calling and creating the main method

@@ -1,3 +1,7 @@
+import StdIn;
+import StdOut;
+
+package PA2;
 // open the class Average
 public class Average{
   // calling and creating the main method

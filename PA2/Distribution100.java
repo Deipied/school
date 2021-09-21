@@ -1,3 +1,4 @@
+package PA2;
 <<<<<<< HEAD
 // open the class Distribution100
 public class Distribution100 {
