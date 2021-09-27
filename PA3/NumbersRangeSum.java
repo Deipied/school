@@ -1,4 +1,8 @@
+<<<<<<< HEAD:NumbersRangeSum.java
 // opens the NumbersRangeSum class file
+=======
+package PA3;
+>>>>>>> c1763d74fa0d3a6b3a897d4f299badd9350387c5:PA3/NumbersRangeSum.java
 public class NumbersRangeSum{
     // this is the main that always runs first
     public static void main(String[] args){

@@ -1,4 +1,10 @@
+<<<<<<< HEAD:TriangularTest.java
 // opens the class TriangularTest as required by java
+=======
+package PA3;
+import javax.swing.plaf.TreeUI;
+
+>>>>>>> c1763d74fa0d3a6b3a897d4f299badd9350387c5:PA3/TriangularTest.java
 public class TriangularTest{
     // the main part of the code that executes first
     public static void main(String[] args){
