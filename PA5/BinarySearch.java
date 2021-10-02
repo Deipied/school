@@ -1,101 +1,75 @@
-// import java.io.IOException;
-// // initialize the class BinarySearch
-// public class BinarySearch{
-//     // this is the search method
-//     public static int search(int[] arr, int key){
-//         // assign int lo to 0 and hi to length of array -1
-//         int lo = 0, hi = arr.length - 1; 
-//         // Search for key in a[lo, hi).
-//         if (hi <= lo) return -1;
-        
-//         int mid = lo + (hi - lo) / 2;
-        
-//         int cmp = a[mid].compareTo(key);
-        
-//         if (cmp > 0) return search(key, a, lo, mid);
-//         else if (cmp < 0) return search(key, a, mid+1, hi);
-//         else return mid;
-//     }
-//     public static void main(String[] args){ 
-//         // Print keys from standard input that
-//         // do not appear in file args[0].
-//         In in = new In(args[0]);
-        
-//         String[] a = in.readAllStrings();
-       
-//         while (!StdIn.isEmpty()){
-//             String key = StdIn.readString();
-//             if (search(key, a) < 0) StdOut.println(key);
-//         }
-//     }
-// }
-
 import java.io.IOException;
 
 public class BinarySearch {
-    //binarysearch method
+    //establish new binarysearch method
     public static int binarysearch(int[] arr, int key){
-    //Initialize integer variable lo to 0 and hi to length of input array - 1
+    //initialize lo and hi as int values based on length of the arr
         int lo = 0, hi = arr.length - 1;
 
-    //while lo index is less than hi index continue iterating,
-    //and keep narrowing the search in successive iterations.
+    //this while loop allows you to keep halving because lo is always less than hi until it isnt
         while (lo < hi){
-
+            // mid is int calculated by the lo hi values that change
             int mid = (lo + hi) / 2;
-
+            // this checks to see if key is greater or equal to arr at index mid
             if (arr[mid] <= key)
+            // makes a new lo since we know it is in the upper half so the new lo is mid plus one
                 lo = mid + 1;
-
+            // this checks to see if key is less than mid
             if (arr[mid] > key)
+            // this sets the new high to mid since we are now working with the lower half
                 hi = mid;
+        } 
 
-        } //end of while loop
-
-        //if arr[lo] is the same as the key, return lo
+        //this if statement checks to see if arr at index lo is the key
         if (arr[lo] == key)
             return lo;
-        //if arr[lo] is not the same as the key but arr[lo-1] is, then return lo-1
+        //this else if statement checks to see is arr at index lo does not equal your key
+        // and it checks to see if the index at lo-1 is equal to key which returns that if it's true
         else if ((arr[lo] != key) && (arr[lo-1] == key))
             return lo - 1;
-        //else the key is not in the array, so call binarysearch recursively with key-1
+        //since all cases are covered it would mean that the key is not in the arr so this calls binary search recursively
         else
             return (binarysearch( arr,(key-1)));
 
-    } //end of binarysearch method
+    }
 
-    //main method
+    //this establishes the main method that runs the binary search
     public static void main(String[] args) throws IOException{
 
-        //Create an In object in to read input from the file specified by the first command line argument
+        //this allows you to read from the file input into the CLI
         In in = new In(args[0]);
-        //Read the data from the input file into a string s
+        //this makes the data read from the file into a string
         String s = in.readAll();
-        //Split the string containing input data into tokens and store them in String array
+        //this splits all the data by the space and places them separately into a list in the arr
         String[] array = s.split(" ");
-        //Get the number of elements in array into integer variable n
+        //this calculates n which is the length of arr used in our calc
         int n = array.length;
-        //Create an integer array arr of size n
+        //creates new int array and set it to arr
         int[] arr = new int[n];
-        //Get the elements from string array into integer array arr
+        //converts the string data in the array from the input into the new arr as int
         for (int i = 0; i < n; i++)
             arr[i] = Integer.parseInt(array[i]);
 
-        //Assign the second command line argument or the search key to integervariable k
+        //this assigns the second CLI arguemnt into k, which is the key
         int k = Integer.parseInt(args[1]);
 
-        //Declare a boolean variable flag and set it to true if key is in theinput array
+        //Declare a boolean and set it to true if key is in the input array
         boolean flag = false;
-        for (int i = 0; i < n; i++)
-        if (arr[i] == k) flag = true;
+        for (int i = 0; i < n; i++){
+            if (arr[i] == k){
+                flag = true;
+            }
+        } 
 
-        //Call binarysearch method and assign what it returns to result
+        //this is calling the binaryseach method and stores it as result
         int result = binarysearch(arr,k);
 
-        //if flag is true print out result and if not then print out -1*result
-        if (flag) System.out.println(result);
-        else System.out.println(-1*result);
-
-    } //end of main method
-
+        //checks to see that you have the blooan flag as true otherwise just output -1
+        if (flag) {
+            System.out.println(result);
+        } 
+        else {
+            System.out.println(-1*result);
+        } 
+    } 
 }
