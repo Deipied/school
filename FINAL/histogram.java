@@ -16,27 +16,21 @@ public class Histogram {
         for (int i = 0; i < x.length-1; i++) { //for loop that calc the amount and stores in array
             int count = 0; // declare count equal to 0 
 
-            for (int j = 0; j < data.length-3; j++) {
-            // Checks each value in the text file to see if it falls within each interval.
-                if (data[j+3] >= x[i] && data[j+3] < x[i+1]) {
-                //If value falls withing the current interval, increment count by one
+            for (int j = 0; j < data.length-3; j++) { // for loop that checks values to see if it falls in each interval
+                if (data[j+3] >= x[i] && data[j+3] < x[i+1]) { //if statement that inreases count if it falls in the interval
                 count++;
                 }
             }
 
-            //Set amount[i] to count, or number of values within each interval
-            amount[i] = count;
+            amount[i] = count; //amount stores the number of count
 
-            //Set dimensions to amount[i] if its greater than it.
-            if (amount[i] > dimensions){ 
+            if (amount[i] > dimensions){ //if amount[i] is greater than dimensions, set dimenstions to it
                 dimensions = amount[i];
             }
         } 
 
-        //Set canvas size to 500 by 500
-        StdDraw.setCanvasSize(500, 500);
-        //Set y scale from -1 to dimensions + 1, to leave a little border on both ends
-        StdDraw.setYscale(-1, dimensions + 1);
+        StdDraw.setCanvasSize(500, 500); //sets canvas size
+        StdDraw.setYscale(-1, dimensions + 1); // allows for border on the sides
         StdStats.plotBars(amount); //the method for displaying
     }
 }
