@@ -24,7 +24,7 @@ public class Histogram {
 
             amount[i] = count; //amount stores the number of count
 
-            if (amount[i] > dimensions){ //if amount[i] is greater than dimensions, set dimenstions to it
+            if (amount[i] > dimensions){ //if amount[i] is greater than dimensions, set dimenstion to amount[i]
                 dimensions = amount[i];
             }
         } 

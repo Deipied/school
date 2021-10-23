@@ -1,39 +1,40 @@
-public class Square{
+public class Square{//
     //Private variables for the upper left coordinates and side length of square
-    private final double x0, y0, length0;
+    private final double x1, y1, length1;
 
-    //Constructor, assigns values passed to it to the private variables
+    //required Constructor, assigns values passed 
     public Square(double x, double y, double length){
-        x0 = x;
-        y0 = y;
-        length0 = length;
+        x1 = x;
+        y1 = y;
+        length1 = length;
     }
     
-    //Returns the area of a square of side length a
+    //Returns the area of a square
     public double area(Square a){
-        return length0*length0;
+        return length1*length1;
     }
 
-    //Returns the perimater of a square of side length a
+    //Returns the perimater of a square
     public double perimeter(Square a){
-        return length0*4;
+        return length1*4;
     }
 
-    //Returns true if square b intersects square a, and false otherwise
+    //Returns true if square b intersects square a
     public boolean intersects(Square a, Square b){
-        double xamax = a.x0 + a.length0; // max x value for a
-        double xamin = a.x0; // min x value for a
-        double yamax = a.y0; // max y value for a
-        double yamin = a.y0 - a.length0; // min y value for a
-        double xbmax = b.x0 + b.length0; // max x value for b
-        double xbmin = b.x0; // min x value for b
-        double ybmax = b.y0; // max y value for b
-        double ybmin = b.y0 - b.length0; // min y value for b
+        double xamax = a.x1 + a.length1; // max x value for a
+        double xamin = a.x1; // min x value for a
+        double yamax = a.y1; // max y value for a
+        double yamin = a.y1 - a.length1; // min y value for a
+        double xbmax = b.x1 + b.length1; // max x value for b
+        double xbmin = b.x1; // min x value for b
+        double ybmax = b.y1; // max y value for b
+        double ybmin = b.y1 - b.length1; // min y value for b
         
         //If b contains a, then they do not intersect
         if (b.contains(a, b) == true){
             return false;
         }
+        //first else if statement checks to see if square b intersects square a
         else if (xamax >= xbmin && xamax <= xbmax){
             if (yamin >= ybmin && yamin <= ybmax){
                 return true;
@@ -45,6 +46,7 @@ public class Square{
                 return false;
             }
         }
+        //second else if statement checks to see if square b intersects square a
         else if (xamin >= xbmin && xamin <= xbmax){
             if (yamin >= ybmin && yamin <= ybmax){
                 return true;
@@ -56,6 +58,7 @@ public class Square{
                 return false;
             }
         }
+        //if no conditions are met, square a and b are not intersecting so return false
         else{
             return false;
         }
@@ -63,14 +66,16 @@ public class Square{
 
     //Returns true if square b is contained within square a without overlap, and false otherwise
     public boolean contains(Square a, Square b){
-        double xamax = a.x0 + a.length0; // max x value for a
-        double xamin = a.x0; // min x value for a
-        double yamax = a.y0; // max y value for a
-        double yamin = a.y0 - a.length0; // min y value for a
-        double xbmax = b.x0 + b.length0; // max x value for b
-        double xbmin = b.x0; // min x value for b
-        double ybmax = b.y0; // max y value for b
-        double ybmin = b.y0 - b.length0; // min y value for b
+        double xamax = a.x1 + a.length1; // max x value for a
+        double xamin = a.x1; // min x value for a
+        double yamax = a.y1; // max y value for a
+        double yamin = a.y1 - a.length1; // min y value for a
+        double xbmax = b.x1 + b.length1; // max x value for b
+        double xbmin = b.x1; // min x value for b
+        double ybmax = b.y1; // max y value for b
+        double ybmin = b.y1 - b.length1; // min y value for b
+        
+        //compares different values of the sides to figure out if it is contained
         if (xamin > xbmin && xamax < xbmax && yamin > ybmin && yamax < ybmax){
             return true;
         }
@@ -79,17 +84,17 @@ public class Square{
         }
     }
 
-    //Main method
+    //the main method
     public static void main(String[] args){
-        //Get the values for the first square from command line arguments into xa,ya,lenghta double variables
-        double xa = Double.parseDouble(args[0]);
+        //assign double values for the command line input
+        double xa = Double.parseDouble(args[0]);        
         double ya = Double.parseDouble(args[1]);
         double lengtha = Double.parseDouble(args[2]);
         
-        //Create a square object a using values stored in xa,ya,lengtha variables
+        //Create a square object using the CLI values
         Square a = new Square(xa, ya, lengtha);
         
-        //Call area and perimeter methods to print area and perimeter of square a
+        //Call area and perimeter methods to print requried statements for square a
         StdOut.println("The area is " + a.area(a));
         StdOut.println("The perimter is " + a.perimeter(a));
         double xb = 0.0; // Initializes upper left x coordinate for square b
@@ -108,14 +113,14 @@ public class Square{
 
         //Create a square object b using values stored in xb,yb,lengthb variables
         Square b = new Square(xb, yb, lengthb);
-        //Call intersects() to check if b intersects a
+        //Call intersects() to check if b intersects a with print statements
         if (b.intersects(a, b) == true){
             StdOut.println("It intersects the first square.");
         }
         else {
             StdOut.println("It does not intersect the first square.");
         }
-        //Call contains() to check if b contains a
+        //Call contains() to check if b contains a with required print statements
         if (b.contains(a, b) == true){
             StdOut.println("It contains the first square.");
         }
@@ -123,7 +128,7 @@ public class Square{
             StdOut.println("It does not contain the first square");
         }
         
-        //Set the canvas size to 500 x 500
+        //Set the canvas size to common 500 x 500
         StdDraw.setCanvasSize(500, 500);
         if (Math.abs(xa) > xmax){
             xmax = Math.abs(xa); // Assigns xmax to highest absolute value of either square's x coordinates
@@ -159,5 +164,5 @@ public class Square{
         StdDraw.square(xa + lengtha/2, ya - lengtha/2, lengtha/2);
         //Draw square b
         StdDraw.square(xb + lengthb/2, yb - lengthb/2, lengthb/2);
-    } //end of main method
+    } 
 }
